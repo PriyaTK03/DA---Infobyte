@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Load dataset
 df_retail = pd.read_csv(r'C:\Users\priya\Documents\DA - Infobyte\EDA on Retail\Online_Retail.csv', encoding='ISO-8859-1')
@@ -13,11 +12,6 @@ df_retail.info()
 print(df_retail.head())
 print(df_retail.tail())
 
-# Exploring unique values of each attribute
-# print("Number of transactions: ", df_retail['InvoiceNo'].nunique())
-# print("Number of products: ", df_retail['StockCode'].nunique())
-# print("Number of customers:", df_retail['CustomerID'].nunique())
-# print("Percentage of customers NA: ", round(df_retail['CustomerID'].isnull().sum() * 100 / len(df_retail), 2), "%")
 print(df_retail.nunique())
 # Conversion of column types
 df_retail[['Quantity', 'UnitPrice']] = df_retail[['Quantity', 'UnitPrice']].astype('float')
@@ -91,7 +85,7 @@ print(purchase_frequency.head(10))
 top_products = df_retail.groupby('StockCode')['TotalAmount'].sum().sort_values(ascending=False)
 print(top_products.head(10))
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8, 4))
 customer_country.head(10).plot(kind='bar')
 plt.title('Top 10 Countries by Number of Customers')
 plt.ylabel('Number of Customers')
